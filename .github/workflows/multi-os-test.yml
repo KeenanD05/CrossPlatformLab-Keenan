@@ -1,0 +1,37 @@
+name: Multi-OS Testing - Keenan
+
+on:
+  # Triggers the workflow on push or pull request events, but only for the "main" branch
+  push:
+    branches: [ "main" ]
+
+jobs:
+  test-ubuntu:
+    name: Test on Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing on Ubuntu...
+        run: echo "Testing on Ubuntu..."
+      - name: Display OS info
+        run: uname -a
+      - name: Create test file
+        run: echo "Ubuntu test by Keenan Dias" > test-ubuntu.txt
+      - name: Show file contents
+        run: cat test-ubuntu.txt
+      - name: Ubuntu tests completed
+        run: echo "Ubuntu tests completed"
+
+  test-windows:
+    name: Test on Windows
+    runs-on: windows-latest
+    steps:
+      - name: Testing on Windows...
+        run: echo "Testing on Windows..."
+      - name: Display OS info
+        run: systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+      - name: Create test file
+        run: echo Windows test by Keenan Dias > test-windows.txt
+      - name: Show file contents
+        run: type test-windows.txt
+      - name: Windows tests completed
+        run: echo "Windows tests completed"
